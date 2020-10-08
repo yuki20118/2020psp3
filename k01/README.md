@@ -61,7 +61,19 @@ typedef struct {
 
 
 ## ソースコードの説明
+l.67~68 整数型のresult,posを定義
 
+l.70 resultに-1を代入
+
+l.71~79 arrayCityを照合し、keyと等しい場合はresultにposを代入してループを抜けてresultを返す。
+
+l.83~84 整数型のresult,posを定義
+
+l.86 resultに-1を代入
+
+l.87~91 順番に並んでいるarrayCityをkeyと照合し、keyと等しい場合にはresultにposを代入する。
+
+l.92~101等しくない場合にはarrayCityがkeyよりも大きいか小さいかによりleft,rightの条件を変更し、posと照合し直してkeyと等しくなった時にresultにposを代入してresultを返す。
 
 
 
