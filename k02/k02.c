@@ -75,7 +75,7 @@ void PrintList(Node* pTop)
 
 Node* InsertNewNode(City newCity, Node* pNext)
 {
-    //  ここを実装する
+    //  ここを実装する(動的メモリ加工)
 
 }
 

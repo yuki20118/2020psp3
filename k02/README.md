@@ -61,7 +61,7 @@ typedef struct {
 
     (2) SearchCityByName: 市町村を名称で検索する(5点)  
     [入力]
-    - int key: 検索する市町村のID
+    - int key: 検索する市町村の名称
     - City arrayCity: 検索対象の都市別人口データ(配列)
     - int size: データの数  
 
