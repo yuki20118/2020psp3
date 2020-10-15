@@ -80,7 +80,7 @@ int LinearSearch(int key, City arrayCity[], int size)
 int BinarySearch(int key, City arrayCity[], int left, int right)
 {
     int result;         //  ここを実装する
-    int pos;
+    int pos = 0;
 
     result = -1;
     while(left <= right){
