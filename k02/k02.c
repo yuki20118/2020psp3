@@ -102,13 +102,12 @@ int SearchCityByName(Node* pList, char* cityName, City* pCity)
 
 int SearchCityByID(Node* pList, int ID, City* pCity)    
 {
-    Node* pNode;
-    pNode = pList;
     int i = 0;               // ここを実装する
     
     while(pList != NULL) {
-        if(pNode->city.id == ID){
-            *pCity = pNode->city;        
+        if(pList->city.id == ID){
+            printf("hello\n");
+            *pCity = pList->city;        
             return i;
         }else{
             i++;
@@ -158,6 +157,7 @@ int main(void)
     printf("City ID?");
     scanf("%d", &key);
     cn = SearchCityByID(pTop, key, &city);
+    printf("%d\n", cn);
     if (cn != -1) {
         printf("the city was found at %d\n", cn);
         PrintCity(city);
