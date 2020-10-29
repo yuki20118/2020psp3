@@ -75,17 +75,12 @@ void PrintList(Node* pTop)
 
 Node* InsertNewNode(City newCity, Node* pNext)
 {
-    int i = 0;
     Node* pNew = malloc(sizeof(Node));     //  ここを実装する(動的メモリ加工)
-   
-    while (pNew != NULL){
-        printnewCity(pNew -> city);
-        pNew = pNew ->pNext;
-        i++;
-    }
-
-    
+    pNew -> city = newCity;
+    pNew -> pNext = pNext;    
+    return pNew;
 }
+
 
 #ifdef CHALLENGE1
 int DeleteNodeAt(Node** ppNode, int cn)
@@ -105,20 +100,18 @@ int SearchCityByName(Node* pList, char* cityName, City* pCity)
 }
 #endif
 
-int SearchCityByID(Node* pList, int ID, City* pCity)
+int SearchCityByID(Node* pList, int ID, City* pCity)    //(リストの先頭,key,みつかった市町村のデータ)
 {
-    int pos;        // ここを実装する
-    int result;
-    
-    result = -1;
-    for(pos=0; pos < pList; pos++){
-        if(ID == pCity[pos].id){
-            result = pos;
+     // ここを実装する
+    while(pList != NULL) {
+        if(ID == pList){
+            return pList;
             break;
         }
+        pList = pList->pNext;
     }
 
-    return result;
+    return pList;   //先頭を0番目としたときに何番目に合ったかを返す
 }    
 
 
@@ -130,7 +123,7 @@ int main(void)
     FILE* fp;
     int key;
 
-    fp = fopen("nagasaki.csv","r");
+    fp = fopen("nagasaki2.csv","r");
     if(fp==NULL){
         fputs("File open error\n",stderr);
         exit(EXIT_FAILURE);
