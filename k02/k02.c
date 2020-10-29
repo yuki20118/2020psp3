@@ -100,18 +100,24 @@ int SearchCityByName(Node* pList, char* cityName, City* pCity)
 }
 #endif
 
-int SearchCityByID(Node* pList, int ID, City* pCity)    //(リストの先頭,key,みつかった市町村のデータ)
+int SearchCityByID(Node* pList, int ID, City* pCity)    
 {
-     // ここを実装する
+    Node* pNode;
+    pNode = pList;
+    int i = 0;               // ここを実装する
+    
     while(pList != NULL) {
-        if(ID == pList){
-            return pList;
+        if(pNode->city.id != ID){
+            i++;
+            pList = pList->pNext;
+        }else{
+            *pCity = pNode->city;        
+            return i;
             break;
         }
-        pList = pList->pNext;
+        
     }
-
-    return pList;   //先頭を0番目としたときに何番目に合ったかを返す
+    return -1;
 }    
 
 
