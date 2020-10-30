@@ -80,14 +80,36 @@ CHALLENGE2を有効にしてください。
     - City* pCity: IDが合致した市町村のデータを入れる
 
 ## ソースコードの説明
+(1)InsertNewNode
 
+l.78　新しいノードのメモリ確保をする。
 
+l.79　新しいノードのデータ部(city)にnewCityを代入。
+
+l.80　新しいノードの後に既存のリストが繋がるようにする。
+
+l.81　新しくできたリストを返す。
+
+(2)SerchCityByID
+
+l.105 何番目か数えるためにiを定義する。(初期値は0。)
+
+l.107~117　main関数にてスキャンしたIDに等しいものがある場合はpCityにそのデータを代入して、何番目かを表すiを返す。
+違う場合はiに1を足して次のリストを読み込む。
+全て読み込んで一致するものがない場合は-1を返す。
 
 ## 出力結果
 
 ```
-
+City ID?42208
+the city was found at 14
+42208, NagasakiKen, Matsuura, 23309, 11164, 12145
+free list. items = 21
 ```
-
+```
+City ID?422222
+sorry, the city was not found
+free list. items = 21
+```
 ## 修正履歴
 

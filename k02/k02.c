@@ -106,7 +106,6 @@ int SearchCityByID(Node* pList, int ID, City* pCity)
     
     while(pList != NULL) {
         if(pList->city.id == ID){
-            printf("hello\n");
             *pCity = pList->city;        
             return i;
         }else{
@@ -157,7 +156,6 @@ int main(void)
     printf("City ID?");
     scanf("%d", &key);
     cn = SearchCityByID(pTop, key, &city);
-    printf("%d\n", cn);
     if (cn != -1) {
         printf("the city was found at %d\n", cn);
         PrintCity(city);
