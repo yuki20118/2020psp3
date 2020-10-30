@@ -27,7 +27,13 @@ typedef struct {
 } City;
 ```
 
-2. 必須問題：実装する関数  
+英語版のデータを用意しました。名称は、nagasaki2.csvです。チャレンジ問題2で、一致する文字列が見つからない場合、こちらを利用してください。その場合、main関数内にあるfopenの引数を下記のように変更してください。
+```    
+fp = fopen("nagasaki2.csv","r");
+```
+
+
+1. 必須問題：実装する関数  
 (1) InsertNewNode：必要なメモリを確保し、リストの先頭に新しいデータを挿入する。  
     [入力]
     - City newCity: リストに挿入する市町村のデータ
@@ -53,6 +59,7 @@ typedef struct {
 
 4. チャレンジ問題  
 (1) DeleteNodeAt: 任意のノードをリストから削除する(10点)  
+CHALLENGE2を有効にしてください。  
     [入力]  
     - Node** ppNode: リストの先頭を指すポインタ変数のアドレス(ポインタのポインタ)  
     - int cn: ノードの位置(先頭のノードを0とする)  
@@ -60,23 +67,49 @@ typedef struct {
     - return値: 削除に成功したらSUCCESS、失敗したらERRR  
 
     (2) SearchCityByName: 市町村を名称で検索する(5点)  
+    CHALLENGE1を有効にしてください。  
     [入力]
     - int key: 検索する市町村の名称
     - City arrayCity: 検索対象の都市別人口データ(配列)
     - int size: データの数  
+    - Node* pList: リストの先頭アドレス
+    - char* cityName: 検索する市町村の名称
 
     [出力]  
-    - return値: IDが合致した配列データのindex。IDが一致するデータがない場合は-1。
+    - return値: cityNameが合致した場所(先頭を0とする)。cityNameが一致するデータがない場合は-1。
+    - City* pCity: IDが合致した市町村のデータを入れる
 
 ## ソースコードの説明
+(1)InsertNewNode
 
+l.78　新しいノードのメモリ確保をする。
 
+l.79　新しいノードのデータ部(city)にnewCityを代入。
+
+l.80　新しいノードの後に既存のリストが繋がるようにする。
+
+l.81　新しくできたリストを返す。
+
+(2)SerchCityByID
+
+l.105 何番目か数えるためにiを定義する。(初期値は0。)
+
+l.107~117　main関数にてスキャンしたIDに等しいものがある場合はpCityにそのデータを代入して、何番目かを表すiを返す。
+違う場合はiに1を足して次のリストを読み込む。
+全て読み込んで一致するものがない場合は-1を返す。
 
 ## 出力結果
 
 ```
-
+City ID?42208
+the city was found at 14
+42208, NagasakiKen, Matsuura, 23309, 11164, 12145
+free list. items = 21
 ```
-
+```
+City ID?422222
+sorry, the city was not found
+free list. items = 21
+```
 ## 修正履歴
 
