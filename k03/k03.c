@@ -14,11 +14,11 @@ char* ForceSearch(char text[], char key[])
     int pos = 0;
     int text_len=0,key_len=0,i;
 
-    for(i=0; text[i]="\0"; i++){
+    for(i=0; text[i]="\0"; i++){        //textの長さ
         text_len++;
     }
 
-    for(i=0; key[i]="\0"; i++){
+    for(i=0; key[i]="\0"; i++){         //keyの長さ
         key_len++;
     }
 
@@ -27,19 +27,19 @@ char* ForceSearch(char text[], char key[])
 
 
     for(start=0; start <= text_len; start++){
+        
         for(pos=0; pos <= key_len; pos++){
             if(text[start + pos]==key[pos]){
-                pos++;
+                if(pos==key_len-1){             //文字が一致
+                    return text+start;
+                }
             }
             else{
-                pos = 0;
+                break;
             }    
-        }
-        
-        
+        }    
     }
-    
-    return text+start;
+    return NULL;
 }
 
 char* BMSearch(char text[], char key[])
