@@ -43,7 +43,7 @@ char* BMSearch(char text[], char key[])
 
     int index = 0;
     int key_index = 0;
-    int text_len=0,key_len=0,i=0;
+    int text_len=0,key_len=0,i=0,tmp;
     int table[ALPHABET_LEN];
 
     for(i=0; text[i]!='\0'; i++){        
@@ -73,11 +73,17 @@ char* BMSearch(char text[], char key[])
             if(key_index==0){                       
                 return &text[index];                
             }else{
+                tem=index;
                 index--;
                 key_index--;                                                              
             }
         } 
+
         index=index+table[text[index]];
+        if(index < tmp){
+            index++;
+        }
+
     }
     return NULL;
 }
