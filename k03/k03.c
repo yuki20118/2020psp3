@@ -68,22 +68,20 @@ char* BMSearch(char text[], char key[])
     index=key_len-1;
 
     while(index <= text_len) {
-        key_index=key_len-1;                        
+        key_index=key_len-1;
+        tmp=index;                        
         while (text[index] == key[key_index]){                                                 
             if(key_index==0){                       
                 return &text[index];                
             }else{
-                tem=index;
                 index--;
                 key_index--;                                                              
             }
         } 
-
         index=index+table[text[index]];
         if(index < tmp){
             index++;
         }
-
     }
     return NULL;
 }
