@@ -79,8 +79,8 @@ char* BMSearch(char text[], char key[])
             }
         } 
         index=index+table[text[index]];
-        if(index < tmp){
-            index++;
+        if(index <= tmp){
+            index = tmp+1;
         }
     }
     return NULL;
