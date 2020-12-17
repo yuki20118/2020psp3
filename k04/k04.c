@@ -80,12 +80,74 @@ void BubbleSort(City arrayCity[], int size)
 {
     //  ここを実装する
 
+
+    int cnt=1;        
+    int pos;
+    City tmp;
+    
+
+    while(cnt!=0){
+        cnt=0;
+
+        for(pos=0; pos<size-1; pos++){
+            if(arrayCity[pos].total > arrayCity[pos+1].total){
+                tmp = arrayCity[pos];
+                arrayCity[pos] = arrayCity[pos+1];
+                arrayCity[pos+1] = tmp;
+                cnt++;
+            }
+        }
+    
+    }
+      
 }
 
 
 void QuickSort(City arrayCity[], int left, int right)
 {
     //  ここを実装する
+    int i, j, cn=MAX_CITY;
+    City pivot,tmp;
+
+    //要素数が1以上のとき繰り返す
+    if(cn>=1){
+        i=left;
+        j=right;
+        pivot=arrayCity[left];
+
+        while(1){
+            while(pivot.seafood > arrayCity[i].seafood){
+                //左から順番にpivotより大きな値を探す
+                i++;
+            }
+            while(pivot.seafood <= arrayCity[j].seafood){
+                //右から順番にpivot以下の値を探す
+                j--;
+            }
+            if(i>=j){
+                break;
+            }else{
+                //iの場所の値とjの場所の値を入れ替える
+
+                tmp = arrayCity[i];         
+                arrayCity[i] = arrayCity[j];
+                arrayCity[j] = tmp; 
+            }
+        }
+
+    //pivotの値とjの場所の値を入れ替える
+        tmp = pivot;
+        pivot = arrayCity[j];
+        arrayCity[j] = pivot;
+
+    //左側でQuickSortを再起呼び出しする
+        right=j-1;
+        QuickSort(arrayCity[], left, right);
+
+    //右側も。
+        left=j+1;
+        QuickSort(arrayCity[], left, right);
+    }
 
 }
 
