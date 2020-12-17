@@ -142,11 +142,12 @@ void QuickSort(City arrayCity[], int left, int right)
 
     //左側でQuickSortを再起呼び出しする
         right=j-1;
-        QuickSort(arrayCity[], left, right);
-
+        QuickSort(arrayCity, left, right);
+        cn = cn - (i-1);
     //右側も。
         left=j+1;
-        QuickSort(arrayCity[], left, right);
+        QuickSort(arrayCity, left, right);
+        cn = cn - (MAX_CITY - j);
     }
 
 }
