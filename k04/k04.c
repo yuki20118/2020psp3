@@ -79,16 +79,12 @@ int LoadData(City arrayCity[])
 void BubbleSort(City arrayCity[], int size)
 {
     //  ここを実装する
-
-
     int cnt=1;        
     int pos;
     City tmp;
     
-
     while(cnt!=0){
         cnt=0;
-
         for(pos=0; pos<size-1; pos++){
             if(arrayCity[pos].total > arrayCity[pos+1].total){
                 tmp = arrayCity[pos];
@@ -97,57 +93,58 @@ void BubbleSort(City arrayCity[], int size)
                 cnt++;
             }
         }
-    
     }
-      
 }
 
 
 void QuickSort(City arrayCity[], int left, int right)
 {
     //  ここを実装する
-    int i, j, cn=MAX_CITY;
-    City pivot,tmp;
+    int i, j;
+    int pivot;
+    City tmp;
 
-    //要素数が1以上のとき繰り返す
-    if(cn>=1){
+    //要素数が1以上
+    if(left < right){
         i=left;
         j=right;
-        pivot=arrayCity[left];
+        pivot = arrayCity[left].seafood;
 
         while(1){
-            while(pivot.seafood > arrayCity[i].seafood){
+
+            while(pivot > arrayCity[i].seafood && i <= right){
                 //左から順番にpivotより大きな値を探す
                 i++;
             }
-            while(pivot.seafood <= arrayCity[j].seafood){
+
+            while(pivot <= arrayCity[j].seafood && j > left){
                 //右から順番にpivot以下の値を探す
                 j--;
             }
+
             if(i>=j){
                 break;
             }else{
                 //iの場所の値とjの場所の値を入れ替える
-
                 tmp = arrayCity[i];         
                 arrayCity[i] = arrayCity[j];
                 arrayCity[j] = tmp; 
             }
+
         }
 
     //pivotの値とjの場所の値を入れ替える
-        tmp = pivot;
-        pivot = arrayCity[j];
-        arrayCity[j] = pivot;
+        tmp = arrayCity[left];
+        arrayCity[left] = arrayCity[j];
+        arrayCity[j] = tmp;
 
     //左側でQuickSortを再起呼び出しする
         right=j-1;
         QuickSort(arrayCity, left, right);
-        cn = cn - (i-1);
+
     //右側も。
         left=j+1;
         QuickSort(arrayCity, left, right);
-        cn = cn - (MAX_CITY - j);
     }
 
 }
@@ -193,7 +190,7 @@ int main(void)
    
 //    MergeSort(arrayCity, 0, MAX_CITY - 1);
 //    HeapSort(arrayCity, MAX_CITY);
-    PrintArray(arrayCity, MAX_CITY);
+//    PrintArray(arrayCity, MAX_CITY);
 
 
 
