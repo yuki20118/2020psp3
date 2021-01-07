@@ -112,48 +112,39 @@ void QuickSort(City arrayCity[], int left, int right)
 
         while(1){
 
-            //左から順番にpivotより大きな値を探す
+
             for(i=left; i<=right; i++){
                 if(pivot < arrayCity[i].seafood){
-                    i = arrayCity[i].seafood;
                     break;
-                }
-                
+                }  
             }
             
-            //右から順番にpivot以下の値を探す
+            
             for(j=right; j>left; j--){
                 if(pivot >= arrayCity[j].seafood){
-                    j = arrayCity[j].seafood;
                     break;
                 }
-                
+
             }
 
 
             if(i>=j){
                 break;
             }else{
-                //iの場所の値とjの場所の値を入れ替える
                 tmp = arrayCity[i];         
                 arrayCity[i] = arrayCity[j];
                 arrayCity[j] = tmp; 
             }
-
         }
 
-    //pivotの値とjの場所の値を入れ替える
         tmp = arrayCity[left];
         arrayCity[left] = arrayCity[j];
         arrayCity[j] = tmp;
 
-    //左側でQuickSortを再起呼び出しする
-        right=j-1;
-        QuickSort(arrayCity, left, right);
-
-    //右側も。
-        left=j+1;
-        QuickSort(arrayCity, left, right);
+        
+        QuickSort(arrayCity, left, j-1);
+   
+        QuickSort(arrayCity, j+1, right);
     }
 
 }
