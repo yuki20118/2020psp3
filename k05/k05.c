@@ -105,8 +105,30 @@ int StackIsEmpty(void)
 
 void DepthFirstSearch(int size, int matrix[size][size], int start)
 {
-    //  ここを実装する
+    //ここを実装する(深さ優先探索)
+    printf("---深さ優先探索---\n");
+    int i,val;
+    int visited[MAX_STATIONS];
+    for(i = 0; i < size; i++){
+        visited[i]=0;
+    }
+      
+    
+    StackInit();
+    StackPush(start);
 
+    while(StackIsEmpty() == FALSE){
+        val = StackPop();
+        if(visited[val] == 0){
+            visited[val] = 1;
+            printf("%d,%s\n",val,ArrayStation[val].kanji);
+            for(i = 0; i < size; i++){
+                if(matrix[val][i] != 0){
+                    StackPush(i);
+                }
+            }    
+        }
+    }
 }
 
 
@@ -171,7 +193,31 @@ int QueueIsEmpty()
 
 void BreadthFirstSearch(int size, int matrix[size][size], int start)
 {
-    //  ここを実装する
+    //ここを実装する(幅優先探索)
+    int i,val;
+    int visited[MAX_STATIONS];
+    printf("\n---幅優先探索---\n");
+    
+    for(i = 0; i < size; i++){
+        visited[i] = 0;
+    }
+
+    InitQueue();
+    EnQueue(start);
+
+    while(QueueIsEmpty() == FALSE){
+        val = DeQueue();
+        if(visited[val] == 0){
+            visited[val] = 1;
+            printf("%d,%s\n",val,ArrayStation[val].kanji);
+            for(i = 0; i < size; i++){
+                if(matrix[val][i] != 0){
+                    EnQueue(i);
+                }       
+            }
+        }
+    }
+
 
 }
 
@@ -180,8 +226,8 @@ void BreadthFirstSearch(int size, int matrix[size][size], int start)
 
 int SearchGraphByDijkstra(int start, int goal, int size, int matrix[size][size])
 {
-    //  ここを実装する
-
+    //ここを実装する
+    
 }
 
 
