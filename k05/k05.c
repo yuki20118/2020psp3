@@ -106,15 +106,14 @@ int StackIsEmpty(void)
 void DepthFirstSearch(int size, int matrix[size][size], int start)
 {
     //ここを実装する(深さ優先探索)
+    printf("---深さ優先探索---\n");
     int i,val;
     int visited[MAX_STATIONS];
-    printf("---深さ優先探索---\n");
-    //配列を初期化。
     for(i = 0; i < size; i++){
         visited[i]=0;
     }
-
-    //stackを初期化してstartをPush
+      
+    
     StackInit();
     StackPush(start);
 
@@ -127,13 +126,9 @@ void DepthFirstSearch(int size, int matrix[size][size], int start)
                 if(matrix[val][i] != 0){
                     StackPush(i);
                 }
-            }
-            
+            }    
         }
-
     }
-
-
 }
 
 
@@ -202,7 +197,7 @@ void BreadthFirstSearch(int size, int matrix[size][size], int start)
     int i,val;
     int visited[MAX_STATIONS];
     printf("\n---幅優先探索---\n");
-    //配列を初期化。
+    
     for(i = 0; i < size; i++){
         visited[i] = 0;
     }
