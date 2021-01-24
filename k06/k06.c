@@ -81,15 +81,16 @@ void DynamicProgLimited(Menu arrayItem[], int items, int nap_size)
         }
     }
 
-    for(i = 0; i <= items; i++){
+    for(i = 0; i < items+1; i++){
         for(k = 1; k < arrayItem[k].calorie; k++){
-            if(nap_size < arrayItem[i-1].calorie){
+            if(j < arrayItem[i-1].price){
                 //1つ上の値をコピー
                 nap_value[i][j] = nap_value[i-1][j];
             }
         }
-        for(j = 1; j <= nap_size; j++){
-            if(nap_value[i-1][j] >= nap_value[i-1][j-arrayItem[i-1].calorie] + arrayItem[i-1].calorie){   //そのままと入れ替えた場合の比較
+        for(j = 1; j < nap_size+1; j++){
+            //入れ替えない場合と入れ替えた場合の比較
+            if(nap_value[i-1][j] >= nap_value[i-1][j-arrayItem[i-1].price] + arrayItem[i-1].price){
                 //入れ替えない場合
                 nap_value[i][j] = nap_value[i-1][j]; 
             }else{
