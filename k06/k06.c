@@ -74,34 +74,28 @@ void DynamicProgLimited(Menu arrayItem[], int items, int nap_size)
     //　ここを実装する
     int i,j,k;
 
-    //表の初期化
     for(i = 0; i < items+1; i++){
         for(j = 0; j < nap_size+1; j++){
             nap_value[i][j] = 0;
         }
     }
 
-    for(i = 0; i < items+1; i++){
-        for(k = 1; k < arrayItem[k].calorie; k++){
-            if(j < arrayItem[i-1].price){
-                //1つ上の値をコピー
-                nap_value[i][j] = nap_value[i-1][j];
-            }
+    for(i = 1; i < items; i++){
+        
+        if(j < arrayItem[i-1].price){
+            nap_value[i][j] = nap_value[i-1][j];
         }
-        for(j = 1; j < nap_size+1; j++){
-            //入れ替えない場合と入れ替えた場合の比較
+
+        for(j = arrayItem[i-1].price; j < nap_size+1; j++){
             if(nap_value[i-1][j] >= nap_value[i-1][j-arrayItem[i-1].price] + arrayItem[i-1].price){
-                //入れ替えない場合
                 nap_value[i][j] = nap_value[i-1][j]; 
             }else{
-                //入れ替える場合
-                nap_value[i][j] = nap_value[i-1][j-arrayItem[i-1].calorie] + arrayItem[i-1].calorie;
+                nap_value[i][j] = nap_value[i-1][j-arrayItem[i-1].price] + arrayItem[i-1].price;
             }
-        }    
-        history[i][j] = nap_value[i][j];
+        }
     }
 
-    printf("nap_value[%d][%d] == %d\n",items+1,nap_size+1,nap_value[items+1][nap_size+1]);
+    printf("nap_value[%d][%d] == %d\n",items,nap_size+1,nap_value[items][nap_size+1]);
 
 }
 
