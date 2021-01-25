@@ -80,11 +80,9 @@ void DynamicProgLimited(Menu arrayItem[], int items, int nap_size)
         }
     }
 
-    for(i = 1; i < items; i++){
+    for(i = 1; i < items+1; i++){
         for(j = 1; j < arrayItem[i-1].price; j++){
-            if(j < arrayItem[i-1].price){
-                nap_value[i][j] = nap_value[i-1][j];
-            }
+            nap_value[i][j] = nap_value[i-1][j];
         }
         
         for(j = arrayItem[i-1].price; j < nap_size+1; j++){
